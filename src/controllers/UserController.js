@@ -4,12 +4,21 @@ class UserController {
   // cria novo user
   async store(req, res) {
     try {
+      // Cria um novo objeto com os dados que vem do body
       const novoUser = await User.create(req.body);
+      // desestrutura o array pegando apenas os dados de id e nome e email
       const { id, nome, email } = novoUser;
-      return res.json({ id, nome, email });
+      return res.json({
+        id,
+        nome,
+        email,
+      }); /* se estiver tudo ok ele responde com
+      um json os dados */
     } catch (e) {
+      // se tiver erro
       return res.status(400).json({
-        errors: e.errors.map((err) => err.message),
+        // retorna o status 400 e manda o json
+        errors: e.errors.map((err) => err.message), // faz um for para mapear as msg de erro
       });
     }
   }

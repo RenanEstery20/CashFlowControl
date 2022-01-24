@@ -21,5 +21,6 @@ module.exports = {
     "no-param-reassign": "off",
     "consistent-return": "off",
     camelcase: "off",
+    "object-curly-newline": "off",
   },
 };
