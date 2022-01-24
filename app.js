@@ -5,7 +5,9 @@ dotenv.config();
 import "./src/database";
 
 import express from "express";
+import cors from "cors";
 import userRoutes from "./src/routes/userRoutes";
+import tokenRoutes from "./src/routes/tokenRoutes";
 
 class App {
   constructor() {
@@ -17,10 +19,12 @@ class App {
   middleware() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(cors());
   }
 
   routes() {
     this.app.use("/users/", userRoutes);
+    this.app.use("/tokens/", tokenRoutes);
   }
 }
 
